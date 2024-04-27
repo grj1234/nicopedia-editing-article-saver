@@ -14,7 +14,7 @@
 
 (function(){
 	if(!document.getElementById("HtmlSaverScript88A042C75A9B4ED99FFDFFD32ED33C38")) {
-		const p='<path to saver.js script>':
+		const p='<path to saver.js script>';
 		var a=document.createElement('script');
 		a.setAttribute('type','text/javascript');
 		a.setAttribute('src',p+'?'+parseInt(Date.parse(new Date())/600000));
