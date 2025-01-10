@@ -19,6 +19,6 @@
 		a.setAttribute('type','text/javascript');
 		a.setAttribute('src',p+'?'+parseInt(Date.parse(new Date())/600000));
 		a.setAttribute('id','HtmlSaverScript88A042C75A9B4ED99FFDFFD32ED33C38');
-		document.body.appendChild(a);
+		document.head.appendChild(a);
 	}
 })();
