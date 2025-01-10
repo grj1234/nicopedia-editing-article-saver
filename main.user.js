@@ -14,7 +14,7 @@
 
 (function(){
 	if(!document.getElementById("HtmlSaverScript88A042C75A9B4ED99FFDFFD32ED33C38")) {
-		const p='https://cdn.jsdelivr.net/gh/grj1234/nicopedia-editing-article-saver@master/saver.min.js';
+		const p='https://cdn.jsdelivr.net/gh/grj1234/nicopedia-editing-article-saver@master/saver.min.js'; // ここにsaver.jsへのURLを指定。
 		var a=document.createElement('script');
 		a.setAttribute('type','text/javascript');
 		a.setAttribute('src',p+'?'+parseInt(Date.parse(new Date())/600000));
