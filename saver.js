@@ -19,10 +19,10 @@ function saveArticleHtml(timestampString) {
 		return;
 	}
 	const textBlob = new Blob([textBody], { type: 'text/plain' });
-	const articleMatch=window.document.location.href.match(/dic\.nicovideo\.jp\/p\/([a-z]+)\/([^?\/]+)(\/([^?]+))?/);
+	const articleMatch=window.document.location.href.match(/dic\.nicovideo\.jp\/p\/([a-z]+)\/([^?\/]+)(\/\d+)?/);
 	const articleType=articleMatch[1];
 	let articleName=decodeURI(articleMatch[2]);
-	const articleRevision=(articleMatch[4]===undefined)?"latest":articleMatch[4];
+	const articleRevision=(articleMatch[3]===undefined)?"latest":articleMatch[3].substring(1);
 	const replacePattern=[
 		["\\", "￥"],
 		["/", "／"],
@@ -59,3 +59,4 @@ document.getElementById("FileLoadAE8C11EF10054AE39305E6A9FAC33466").addEventList
 	}
 	evt.target.value="";
 },false);
+
