@@ -13,8 +13,7 @@ function saveArticleHtmlLT() {
 }
 function saveArticleHtml(timestampString) {
 	const textareaElement=document.getElementById('nicopedia-article-textarea');
-	const textareaStyle=window.getComputedStyle(textareaElement);
-	const textBody=(textareaStyle.getPropertyValue('display')==="none")?(document.getElementById("nicopedia-article-textarea_ifr").contentWindow.document.getElementById('tinymce').innerHTML):(textareaElement.value);
+	const textBody=(window.getComputedStyle(textareaElement).getPropertyValue('display')==="none")?(document.getElementById("nicopedia-article-textarea_ifr").contentWindow.document.getElementById('tinymce').innerHTML):(textareaElement.value);
 	if(!textBody) {
 		return;
 	}
@@ -22,7 +21,7 @@ function saveArticleHtml(timestampString) {
 	const articleMatch=window.document.location.href.match(/dic\.nicovideo\.jp\/p\/([a-z]+)\/([^?\/]+)(\/\d+)?/);
 	const articleType=articleMatch[1];
 	let articleName=decodeURI(articleMatch[2]);
-	const articleRevision=(articleMatch[3]===undefined)?"latest":articleMatch[3].substring(1);
+	const articleRevision=(!articleMatch[3])?"latest":articleMatch[3].substring(1); // リビジョン番号 URLにないなら最新(latest)のリビジョンとして扱う
 	const replacePattern=[
 		["\\", "￥"],
 		["/", "／"],
@@ -48,7 +47,7 @@ document.getElementById("FileLoadAE8C11EF10054AE39305E6A9FAC33466").addEventList
 	const textareaElement=document.getElementById('nicopedia-article-textarea');
 	const fileToLoad=evt.target.files[0];
 	if(window.confirm("ファイル「"+fileToLoad.name+"」をロードしますか？ (編集中の内容は破棄されます)")){
-		var reader = new FileReader();
+		const reader = new FileReader();
 		reader.readAsText(fileToLoad);
 		reader.onload = function(e){
 			const isTinyMceEnabled=window.getComputedStyle(textareaElement).getPropertyValue('display')==="none";
@@ -59,4 +58,3 @@ document.getElementById("FileLoadAE8C11EF10054AE39305E6A9FAC33466").addEventList
 	}
 	evt.target.value="";
 },false);
-
